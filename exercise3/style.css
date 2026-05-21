@@ -1,3 +1,75 @@
+body {
+  background-image: url('assets/acc-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  font-family: system-ui, 'Segoe UI', 'Helvetica Neue', sans-serif;
+}
+
+.btn-bg-1 {
+  background-image: url('assets/acc-bg1.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+.btn-bg-2 {
+  background-image: url('assets/acc-bg2.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+.btn-bg-3 {
+  background-image: url('assets/acc-bg3.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+.btn-bg-4 {
+  background-image: url('assets/acc-bg4.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+.btn-bg-5 {
+  background-image: url('assets/acc-bg5.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: rgba(0,0,0,0.5);
+  background-blend-mode: overlay;
+  color: white;
+  font-weight: 600;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: rgba(0,0,0,0.125);
+}
+
+.accordion-item {
+  background-color: transparent;
+  border: none;
+  margin-bottom: 15px;
+}
+
+.accordion-body {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 0 0 8px 8px;
+}
+
 .place-card {
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -38,27 +110,11 @@
 }
 
 .summary-section {
-  background: #fef9e6;
+  background: rgba(254, 249, 230, 0.95);
   border-radius: 1rem;
   padding: 1.5rem;
   margin-top: 2rem;
   border: 1px solid #ffdd99;
-}
-
-.accordion-button:not(.collapsed) {
-  background-color: #eef2f7;
-  color: #2c3e2f;
-  font-weight: 600;
-}
-
-.accordion-button:focus {
-  box-shadow: none;
-  border-color: rgba(0,0,0,0.125);
-}
-
-body {
-  background: #faf8f0;
-  font-family: system-ui, 'Segoe UI', 'Helvetica Neue', sans-serif;
 }
 
 .place-card .card-body {
@@ -78,15 +134,8 @@ body {
 
 .attractions-count {
   font-size: 0.85rem;
-  color: #6c757d;
+  color: #ffdd99;
   margin-left: 0.5rem;
-}
-
-.accordion-icon {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
-  object-fit: contain;
 }
 
 .btn-warning {
@@ -98,4 +147,20 @@ body {
 .btn-warning:hover {
   background-color: #e69500;
   border-color: #cc8400;
+}
+
+h1 {
+  color: #2d4a22;
+  text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+}
+
+.lead {
+  background: rgba(255,255,255,0.7);
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+
+.container {
+  background-color: transparent;
 }
