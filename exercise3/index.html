@@ -6,84 +6,13 @@
   <title>Ghibli Park Explorer | Accordion Booking Form</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <style>
-    .place-card {
-      cursor: pointer;
-      transition: all 0.2s ease-in-out;
-      border: 2px solid transparent;
-      background-color: #fff;
-      margin-bottom: 1rem;
-    }
-    .place-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
-    }
-    .place-card.selected {
-      border-color: #ff6a00;
-      background-color: #fff6e8;
-      box-shadow: 0 0 0 3px rgba(255,106,0,0.25);
-    }
-    .card-img-top {
-      height: 180px;
-      object-fit: cover;
-      background-color: #f0f2f5;
-    }
-    .error-text {
-      font-size: 0.85rem;
-      color: #dc3545;
-      display: block;
-      margin-top: 0.25rem;
-    }
-    .general-error {
-      background-color: #f8d7da;
-      border-left: 5px solid #dc3545;
-      padding: 0.75rem 1rem;
-      border-radius: 0.5rem;
-    }
-    .summary-section {
-      background: #fef9e6;
-      border-radius: 1rem;
-      padding: 1.5rem;
-      margin-top: 2rem;
-      border: 1px solid #ffdd99;
-    }
-    .accordion-button:not(.collapsed) {
-      background-color: #eef2f7;
-      color: #2c3e2f;
-      font-weight: 600;
-    }
-    .accordion-button:focus {
-      box-shadow: none;
-      border-color: rgba(0,0,0,0.125);
-    }
-    body {
-      background: #faf8f0;
-      font-family: system-ui, 'Segoe UI', 'Helvetica Neue', sans-serif;
-    }
-    .place-card .card-body {
-      padding: 1rem;
-    }
-    .place-card .card-title {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    .place-card .card-text {
-      font-size: 0.8rem;
-      line-height: 1.3;
-    }
-    .attractions-count {
-      font-size: 0.85rem;
-      color: #6c757d;
-      margin-left: 0.5rem;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div id="app" class="container py-4 py-md-5">
   <div class="text-center mb-4">
-    <h1 class="display-5 fw-semibold" style="color: #2d4a22;">✨ Ghibli Park Journey ✨</h1>
+    <h1 class="display-5 fw-semibold" style="color: #2d4a22;">Ghibli Park Journey</h1>
     <p class="lead text-muted">Build your dream itinerary — choose attractions, visitors, stay & pay</p>
   </div>
 
@@ -91,39 +20,42 @@
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingPersonal">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePersonal" aria-expanded="true" aria-controls="collapsePersonal">
-          <i class="bi bi-person-circle me-2"></i> Personal Details
+          <img src="assets/personal-icon.png" alt="personal" class="accordion-icon" onerror="this.src='https://placehold.co/24x24?text=User'">
+          Personal Details
         </button>
       </h2>
       <div id="collapsePersonal" class="accordion-collapse collapse show" data-bs-parent="#bookingAccordion">
         <div class="accordion-body">
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Full Name *</label>
-            <input type="text" class="form-control" v-model="form.fullName" placeholder="e.g., Chihiro Ogino">
-            <span class="error-text" v-if="errors.fullName">{{ errors.fullName }}</span>
-          </div>
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Date of Birth *</label>
-            <input type="text" class="form-control" v-model="form.dob" placeholder="MM/DD/YYYY">
-            <span class="error-text" v-if="errors.dob">{{ errors.dob }}</span>
-          </div>
-          <div class="mb-2">
-            <label class="form-label fw-semibold d-block">Gender *</label>
-            <div class="d-flex gap-4">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" value="Male" v-model="form.gender" id="genderMale">
-                <label class="form-check-label" for="genderMale">Male</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" value="Female" v-model="form.gender" id="genderFemale">
-                <label class="form-check-label" for="genderFemale">Female</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" value="Other" v-model="form.gender" id="genderOther">
-                <label class="form-check-label" for="genderOther">Other</label>
-              </div>
+          <form id="personalForm">
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Full Name *</label>
+              <input type="text" class="form-control" v-model="form.fullName" placeholder="e.g., Chihiro Ogino">
+              <span class="error-text" v-if="errors.fullName">{{ errors.fullName }}</span>
             </div>
-            <span class="error-text" v-if="errors.gender">{{ errors.gender }}</span>
-          </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Date of Birth *</label>
+              <input type="text" class="form-control" v-model="form.dob" placeholder="MM/DD/YYYY">
+              <span class="error-text" v-if="errors.dob">{{ errors.dob }}</span>
+            </div>
+            <div class="mb-2">
+              <label class="form-label fw-semibold d-block">Gender *</label>
+              <div class="d-flex gap-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" value="Male" v-model="form.gender" id="genderMale">
+                  <label class="form-check-label" for="genderMale">Male</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" value="Female" v-model="form.gender" id="genderFemale">
+                  <label class="form-check-label" for="genderFemale">Female</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" value="Other" v-model="form.gender" id="genderOther">
+                  <label class="form-check-label" for="genderOther">Other</label>
+                </div>
+              </div>
+              <span class="error-text" v-if="errors.gender">{{ errors.gender }}</span>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -131,7 +63,8 @@
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingPark">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePark" aria-expanded="false" aria-controls="collapsePark">
-          <i class="bi bi-flower1 me-2"></i> Ghibli Park Selection
+          <img src="assets/park-icon.png" alt="park" class="accordion-icon" onerror="this.src='https://placehold.co/24x24?text=Park'">
+          Ghibli Park Selection
           <span class="attractions-count" v-if="places.length">({{ places.length }} attractions)</span>
         </button>
       </h2>
@@ -142,20 +75,22 @@
             <p class="mt-2">Loading magical places...</p>
           </div>
           <div v-else>
-            <div class="row">
-              <div class="col-md-6 col-lg-4 mb-3" v-for="place in places" :key="place.id">
-                <div class="card place-card h-100" :class="{ 'selected': isPlaceSelected(place.id) }" @click="togglePlace(place)">
-                  <img :src="place.image" class="card-img-top" :alt="place.name" @error="handleImageError">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ place.name }}</h5>
-                    <p class="card-text text-muted small">{{ truncateDescription(place.description) }}</p>
-                    <span v-if="isPlaceSelected(place.id)" class="badge bg-success mt-2">Selected</span>
+            <form id="parkForm">
+              <div class="row">
+                <div class="col-md-6 col-lg-4 mb-3" v-for="place in places" :key="place.id">
+                  <div class="card place-card h-100" :class="{ 'selected': isPlaceSelected(place.id) }" @click="togglePlace(place)">
+                    <img :src="place.image" class="card-img-top" :alt="place.name" @error="handleImageError">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ place.name }}</h5>
+                      <p class="card-text text-muted small">{{ truncateDescription(place.description) }}</p>
+                      <span v-if="isPlaceSelected(place.id)" class="badge bg-success mt-2">Selected</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <span class="error-text" v-if="errors.selectedPlaces">{{ errors.selectedPlaces }}</span>
-            <div class="alert alert-info mt-2 small">Click on any card to select/unselect. Multiple choices allowed!</div>
+              <span class="error-text" v-if="errors.selectedPlaces">{{ errors.selectedPlaces }}</span>
+              <div class="alert alert-info mt-2 small">Click on any card to select/unselect. Multiple choices allowed!</div>
+            </form>
           </div>
         </div>
       </div>
@@ -164,21 +99,24 @@
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingVisitors">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVisitors" aria-expanded="false" aria-controls="collapseVisitors">
-          <i class="bi bi-people me-2"></i> Visitors Details
+          <img src="assets/visitors-icon.png" alt="visitors" class="accordion-icon" onerror="this.src='https://placehold.co/24x24?text=Users'">
+          Visitors Details
         </button>
       </h2>
       <div id="collapseVisitors" class="accordion-collapse collapse" data-bs-parent="#bookingAccordion">
         <div class="accordion-body">
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Total number of visitors *</label>
-            <input type="number" class="form-control" v-model.number="form.totalVisitors" min="1" step="1">
-            <span class="error-text" v-if="errors.totalVisitors">{{ errors.totalVisitors }}</span>
-          </div>
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Total number of children (0+) *</label>
-            <input type="number" class="form-control" v-model.number="form.totalChildren" min="0" step="1">
-            <span class="error-text" v-if="errors.totalChildren">{{ errors.totalChildren }}</span>
-          </div>
+          <form id="visitorsForm">
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Total number of visitors *</label>
+              <input type="number" class="form-control" v-model.number="form.totalVisitors" min="1" step="1">
+              <span class="error-text" v-if="errors.totalVisitors">{{ errors.totalVisitors }}</span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Total number of children (0+) *</label>
+              <input type="number" class="form-control" v-model.number="form.totalChildren" min="0" step="1">
+              <span class="error-text" v-if="errors.totalChildren">{{ errors.totalChildren }}</span>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -186,17 +124,20 @@
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingAccommodation">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAccommodation" aria-expanded="false" aria-controls="collapseAccommodation">
-          <i class="bi bi-house-heart me-2"></i> Accommodation
+          <img src="assets/accommodation-icon.png" alt="accommodation" class="accordion-icon" onerror="this.src='https://placehold.co/24x24?text=Hotel'">
+          Accommodation
         </button>
       </h2>
       <div id="collapseAccommodation" class="accordion-collapse collapse" data-bs-parent="#bookingAccordion">
         <div class="accordion-body">
-          <label class="form-label fw-semibold">Select your stay option *</label>
-          <select class="form-select" v-model="form.accommodation">
-            <option value="" disabled>-- Choose an option --</option>
-            <option v-for="opt in accommodationOptions" :value="opt.value" :key="opt.value">{{ opt.label }}</option>
-          </select>
-          <span class="error-text" v-if="errors.accommodation">{{ errors.accommodation }}</span>
+          <form id="accommodationForm">
+            <label class="form-label fw-semibold">Select your stay option *</label>
+            <select class="form-select" v-model="form.accommodation">
+              <option value="" disabled>-- Choose an option --</option>
+              <option v-for="opt in accommodationOptions" :value="opt.value" :key="opt.value">{{ opt.label }}</option>
+            </select>
+            <span class="error-text" v-if="errors.accommodation">{{ errors.accommodation }}</span>
+          </form>
         </div>
       </div>
     </div>
@@ -204,40 +145,43 @@
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingPayment">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePayment" aria-expanded="false" aria-controls="collapsePayment">
-          <i class="bi bi-credit-card me-2"></i> Payment Details
+          <img src="assets/payment-icon.png" alt="payment" class="accordion-icon" onerror="this.src='https://placehold.co/24x24?text=Card'">
+          Payment Details
         </button>
       </h2>
       <div id="collapsePayment" class="accordion-collapse collapse" data-bs-parent="#bookingAccordion">
         <div class="accordion-body">
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Name on Card *</label>
-            <input type="text" class="form-control" v-model="form.cardholderName" placeholder="e.g., Howl Pendragon">
-            <span class="error-text" v-if="errors.cardholderName">{{ errors.cardholderName }}</span>
-          </div>
-          <div class="mb-3">
-            <label class="form-label fw-semibold">Card Number *</label>
-            <input type="text" class="form-control" v-model="form.cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
-            <span class="error-text" v-if="errors.cardNumber">{{ errors.cardNumber }}</span>
-          </div>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label class="form-label fw-semibold">Expiration Date *</label>
-              <input type="text" class="form-control" v-model="form.expiryDate" placeholder="MM/YYYY">
-              <span class="error-text" v-if="errors.expiryDate">{{ errors.expiryDate }}</span>
+          <form id="paymentForm">
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Name on Card *</label>
+              <input type="text" class="form-control" v-model="form.cardholderName" placeholder="e.g., Howl Pendragon">
+              <span class="error-text" v-if="errors.cardholderName">{{ errors.cardholderName }}</span>
             </div>
-            <div class="col-md-6 mb-3">
-              <label class="form-label fw-semibold">CVV *</label>
-              <input type="password" class="form-control" v-model="form.cvv" placeholder="***" maxlength="4">
-              <span class="error-text" v-if="errors.cvv">{{ errors.cvv }}</span>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Card Number *</label>
+              <input type="text" class="form-control" v-model="form.cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+              <span class="error-text" v-if="errors.cardNumber">{{ errors.cardNumber }}</span>
             </div>
-          </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Expiration Date *</label>
+                <input type="text" class="form-control" v-model="form.expiryDate" placeholder="MM/YYYY">
+                <span class="error-text" v-if="errors.expiryDate">{{ errors.expiryDate }}</span>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">CVV *</label>
+                <input type="password" class="form-control" v-model="form.cvv" placeholder="***" maxlength="4">
+                <span class="error-text" v-if="errors.cvv">{{ errors.cvv }}</span>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
 
   <div class="text-center mt-5 mb-4">
-    <button class="btn btn-warning btn-lg px-5 shadow-sm" @click="generateItinerary" style="background-color: #ffaa33; border-color: #e69500; font-weight: 600;">
+    <button class="btn btn-warning btn-lg px-5 shadow-sm" @click="generateItinerary">
       <i class="bi bi-journal-bookmark-fill me-2"></i>Generate Itinerary
     </button>
   </div>
@@ -250,10 +194,10 @@
     <h3 class="border-bottom pb-2 mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i>Your Ghibli Itinerary</h3>
     <div class="row">
       <div class="col-md-6">
-        <p><strong>Full Name:</strong> {{ form.fullName || '—' }}</p>
-        <p><strong>Date of Birth:</strong> {{ formatDate(form.dob) }}</p>
-        <p><strong>Gender:</strong> {{ form.gender || '—' }}</p>
-        <p><strong>Total Visitors:</strong> {{ form.totalVisitors || '—' }} | <strong>Children:</strong> {{ form.totalChildren || '—' }}</p>
+        <p><strong>Full Name:</strong> {{ form.fullName || '&mdash;' }}</p>
+        <p><strong>Date of Birth:</strong> {{ form.dob || '&mdash;' }}</p>
+        <p><strong>Gender:</strong> {{ form.gender || '&mdash;' }}</p>
+        <p><strong>Total Visitors:</strong> {{ form.totalVisitors || '&mdash;' }} | <strong>Children:</strong> {{ form.totalChildren || '&mdash;' }}</p>
         <p><strong>Accommodation:</strong> {{ getAccommodationLabel(form.accommodation) }}</p>
       </div>
       <div class="col-md-6">
@@ -261,7 +205,7 @@
         <ul style="max-height: 200px; overflow-y: auto;">
           <li v-for="place in selectedPlaces" :key="place.id">{{ place.name }}</li>
         </ul>
-        <p class="mt-2"><strong>Payment:</strong> {{ form.cardholderName || '—' }} | Exp: {{ form.expiryDate || '—' }}</p>
+        <p class="mt-2"><strong>Payment:</strong> {{ form.cardholderName || '&mdash;' }} | Exp: {{ form.expiryDate || '&mdash;' }}</p>
       </div>
     </div>
     <hr>
@@ -276,279 +220,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-  const { createApp, ref, onMounted } = Vue;
-
-  createApp({
-    setup() {
-      const form = ref({
-        fullName: '',
-        dob: '',
-        gender: '',
-        totalVisitors: null,
-        totalChildren: null,
-        accommodation: '',
-        cardholderName: '',
-        cardNumber: '',
-        expiryDate: '',
-        cvv: ''
-      });
-
-      const errors = ref({
-        fullName: '',
-        dob: '',
-        gender: '',
-        selectedPlaces: '',
-        totalVisitors: '',
-        totalChildren: '',
-        accommodation: '',
-        cardholderName: '',
-        cardNumber: '',
-        expiryDate: '',
-        cvv: ''
-      });
-      
-      const generalError = ref('');
-      const places = ref([]);
-      const isLoadingPlaces = ref(false);
-      const placesError = ref('');
-      const selectedPlaces = ref([]);
-      const accommodationOptions = ref([
-        { value: 'none', label: 'No accommodation needed' },
-        { value: 'forest_view', label: 'Forest View Hotel' },
-        { value: 'totoro_inn', label: 'Totoro Family Inn' },
-        { value: 'witch_valley', label: 'Witch Valley Guesthouse' },
-        { value: 'luxury_ghibli', label: 'Luxury Ghibli Resort' }
-      ]);
-      const showSummary = ref(false);
-      
-      const ghibliParkData = [
-        { "id": "gwh1", "name": "Central Stairs", "image": "assets/gwh1.jpg", "description": "A brilliant mosaic tile staircase connecting first and second floors." },
-        { "id": "gwh2", "name": "Open Warehouse", "image": "assets/gwh2.jpg", "description": "Contains production artifacts and sculptures from past exhibits in Japan and abroad" },
-        { "id": "gwh3", "name": "No-Face", "image": "assets/gwh3.jpg", "description": "Part of interactive exhibits,where you can become your favorite Studio Ghibli characters." },
-        { "id": "gwh4", "name": "Ghibli Meals", "image": "assets/gwh4.jpg", "description": "Why does the food in Studio Ghibli films look so delicious!? Those secrets are revealed here." },
-        { "id": "gwh5", "name": "Ghibli Posters", "image": "assets/gwh5.jpg", "description": "A collection of Studio Ghibli posters, film and music packagings, books and more, all in one place" },
-        { "id": "gwh6", "name": "Screening Room Cinema Orion", "image": "assets/gwh6.jpg", "description": "Seating about 170 people, Orion screens Studio Ghibli animated-shorts." },
-        { "id": "gwh7", "name": "Director's Office", "image": "assets/gwh7.jpg", "description": "Yubaba from 'Spirited Away' is busy at work." },
-        { "id": "gwh8", "name": "Catbus Room", "image": "assets/gwh8.jpg", "description": "In the play area that recreates the world of My Neighbor Totoro, a one-of-a-kind Cat Bus awaits." },
-        { "id": "gwh9", "name": "Children's Town", "image": "assets/gwh9.jpg", "description": "This area is a mini-replica of the Higashi-Koganei Station area in Tokyo where Studio Ghibli is located." },
-        { "id": "gwh10", "name": "Garden in the Sky", "image": "assets/gwh10.jpg", "description": "Robot Soldiers, from Castle in the Sky, wait patiently for their master to return." },
-        { "id": "gwh11", "name": "The House Below and the Little People's Garden", "image": "assets/gwh11.jpg", "description": "The house where the main character Arrietty and her family live and the surrounding garden." },
-        { "id": "gwh12", "name": "Shop 'Adventurous Flying Squadron'", "image": "assets/gwh12.jpg", "description": "Sells items from all Studio Ghibli productions as well as original Ghibli Park items." },
-        { "id": "gwh13", "name": "Transcontinental Flight Cafe", "image": "assets/gwh13.jpg", "description": "The caf\u00e9 has a line-up of sandwiches, pizzas, etc." },
-        { "id": "hoy1", "name": "Elevator Tower", "image": "assets/hoy1.jpg", "description": "A late 19th century sci-fi architecture that appears in 'Castle in the Sky' and 'Howl's Moving Castle'." },
-        { "id": "hoy2", "name": "World Emporium", "image": "assets/hoy2.jpg", "description": "Antique repair and resale shop from 'Whisper of the Heart'." },
-        { "id": "hoy3", "name": "The Cat Bureau", "image": "assets/hoy3.jpg", "description": "From 'The Cat Returns', this is a cat-sized single-storey wooden building." },
-        { "id": "hoy4", "name": "The Rotary", "image": "assets/hoy4.jpg", "description": "A roundabout like the one in the town square from 'Whisper of the Heart'." },
-        { "id": "df1", "name": "Satsuki and Mei's House", "image": "assets/df1.jpg", "description": "This is the Japanese-Western style house Satsuki and Mei moved to in 'My Neighbor Totoro'." },
-        { "id": "df2", "name": "Dondoko-do", "image": "assets/df2.jpg", "description": "A 5-meter-tall wooden play equipment where children of twelve years and under can play inside." },
-        { "id": "df3", "name": "Dondoko Shop", "image": "assets/df3.jpg", "description": "Keychains, amulet pouches and original Dondoko Forest souvenirs are available for purchase in this shop." },
-        { "id": "df4", "name": "Dondoko-Dokoro", "image": "assets/df4.jpg", "description": "Sells drinks, souvenirs and seasonal items." },
-        { "id": "df5", "name": "Dondoko-go", "image": "assets/df5.jpg", "description": "The slope car connects the ground level to the peak of the Dondoko Forest hill." },
-        { "id": "mv1", "name": "Tatara-ba", "image": "assets/mv1.jpg", "description": "This is a hands-on learning center designed to look like a building in 'Princess Mononoke'." },
-        { "id": "mv2", "name": "Charcoal-grilled Gohei-Mochi Cooking Experience", "image": "assets/mv2.jpg", "description": "Add your preferred sauce and cook this beloved local snack yourself over a traditional charcoal grill." },
-        { "id": "mv3", "name": "Stone-milled Kinako Grinding Experience", "image": "assets/mv3.jpg", "description": "Learn the traditional way of making kinako (soybean flour) using a stone mill." },
-        { "id": "mv4", "name": "Lord Okkoto", "image": "assets/mv4.jpg", "description": "This is a slide based on the character Lord Okkoto from 'Princess Mononoke'." },
-        { "id": "mv5", "name": "Demon Spirit", "image": "assets/mv5.jpg", "description": "This structure is based on the Demon Spirit from 'Princess Mononoke'." },
-        { "id": "mv6", "name": "Mononoke Village Rest Stop", "image": "assets/mv6.jpg", "description": "The rest stop shop sells original items as well as refreshments to help you relax and recharge." },
-        { "id": "vow1", "name": "The Mouth of the Witch", "image": "assets/vow1.jpg", "description": "At the entrance of Valley of Witches, this structure is inspired by the witch Bella Yaga from Earwig and the Witch." },
-        { "id": "vow2", "name": "Okino Residence", "image": "assets/vow2.jpg", "description": "This is a two-storey house where Kiki, the main character from 'Kiki's Delivery Service', lives." },
-        { "id": "vow3", "name": "Guchokipanya Bakery", "image": "assets/vow3.jpg", "description": "The bakery where the main character Kiki and her black cat Jiji from 'Kiki's Delivery Service' live." },
-        { "id": "vow4", "name": "Howl's Castle", "image": "assets/vow4.jpg", "description": "About 20-meters-tall, this is the castle with creature-like features from 'Howl's Moving Castle'." },
-        { "id": "vow5", "name": "Hatter's Millinery", "image": "assets/vow5.jpg", "description": "This is the two-storey hat shop that Sophie, the main character from 'Howl's Moving Castle', manages." },
-        { "id": "vow6", "name": "The House of Witches", "image": "assets/vow6.jpg", "description": "This house is where Earwig, the main character from 'Earwig and the Witch', was taken to live." },
-        { "id": "vow7", "name": "Carousel", "image": "assets/vow7.jpg", "description": "This is a ride for children imagined as one from a traveling fair that comes to the village once a year." },
-        { "id": "vow8", "name": "Flying Machine", "image": "assets/vow8.jpg", "description": "This is a ride for children imagined as one from a traveling fair that comes to the village once a year." },
-        { "id": "vow9", "name": "Lift for Witches", "image": "assets/vow9.jpg", "description": "This elevator goes up to the second floor of Guchokipanya Bakery and Hatter's Millinery." },
-        { "id": "vow10", "name": "Flying Oven", "image": "assets/vow10.jpg", "description": "A restaurant with an impressive brick exterior is located near the entrance to the Valley of Witches." },
-        { "id": "vow11", "name": "Witch Coven 13", "image": "assets/vow11.jpg", "description": "This shop has a variety of original Valley of Witches items." }
-      ];
-      
-      const isPlaceSelected = (id) => {
-        return selectedPlaces.value.some(p => p.id === id);
-      };
-      
-      const togglePlace = (place) => {
-        const exists = selectedPlaces.value.some(p => p.id === place.id);
-        if (exists) {
-          selectedPlaces.value = selectedPlaces.value.filter(p => p.id !== place.id);
-        } else {
-          selectedPlaces.value.push(place);
-        }
-        if (errors.value.selectedPlaces) errors.value.selectedPlaces = '';
-      };
-      
-      const truncateDescription = (desc) => {
-        if (!desc) return '';
-        if (desc.length > 100) {
-          return desc.substring(0, 97) + '...';
-        }
-        return desc;
-      };
-      
-      const handleImageError = (event) => {
-        event.target.src = 'https://placehold.co/400x200?text=Image+Not+Found';
-      };
-      
-      const loadPlaces = () => {
-        places.value = ghibliParkData;
-        isLoadingPlaces.value = false;
-      };
-      
-      const formatDate = (dateStr) => {
-        if (!dateStr) return '—';
-        return dateStr;
-      };
-      
-      const getAccommodationLabel = (val) => {
-        const found = accommodationOptions.value.find(opt => opt.value === val);
-        return found ? found.label : 'Not selected';
-      };
-      
-      const clearErrors = () => {
-        Object.keys(errors.value).forEach(key => {
-          errors.value[key] = '';
-        });
-        generalError.value = '';
-      };
-      
-      const validateForm = () => {
-        let isValid = true;
-        
-        if (!form.value.fullName.trim()) {
-          errors.value.fullName = 'Full name is required.';
-          isValid = false;
-        } else errors.value.fullName = '';
-        
-        if (!form.value.dob) {
-          errors.value.dob = 'Date of birth is required.';
-          isValid = false;
-        } else {
-          const dateRegex = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/;
-          if (!dateRegex.test(form.value.dob)) {
-            errors.value.dob = 'Please enter date in MM/DD/YYYY format.';
-            isValid = false;
-          } else {
-            errors.value.dob = '';
-          }
-        }
-        
-        if (!form.value.gender) {
-          errors.value.gender = 'Please select a gender.';
-          isValid = false;
-        } else errors.value.gender = '';
-        
-        if (!selectedPlaces.value.length) {
-          errors.value.selectedPlaces = 'Please select at least one Ghibli Park attraction.';
-          isValid = false;
-        } else errors.value.selectedPlaces = '';
-        
-        if (form.value.totalVisitors === null || form.value.totalVisitors === '' || form.value.totalVisitors < 1) {
-          errors.value.totalVisitors = 'Total number of visitors must be at least 1.';
-          isValid = false;
-        } else errors.value.totalVisitors = '';
-        
-        if (form.value.totalChildren === null || form.value.totalChildren === '' || form.value.totalChildren < 0) {
-          errors.value.totalChildren = 'Number of children must be 0 or more.';
-          isValid = false;
-        } else errors.value.totalChildren = '';
-        
-        if (form.value.totalChildren !== null && form.value.totalVisitors !== null && form.value.totalChildren > form.value.totalVisitors) {
-          errors.value.totalChildren = 'Children count cannot exceed total visitors.';
-          isValid = false;
-        } else if (errors.value.totalChildren === '') errors.value.totalChildren = '';
-        
-        if (!form.value.accommodation) {
-          errors.value.accommodation = 'Please select an accommodation option.';
-          isValid = false;
-        } else errors.value.accommodation = '';
-        
-        if (!form.value.cardholderName.trim()) {
-          errors.value.cardholderName = 'Cardholder name is required.';
-          isValid = false;
-        } else errors.value.cardholderName = '';
-        
-        if (!form.value.cardNumber.trim()) {
-          errors.value.cardNumber = 'Card number is required.';
-          isValid = false;
-        } else if (!/^\d[\d\s]{13,18}$/.test(form.value.cardNumber.replace(/\s/g, '')) && form.value.cardNumber.replace(/\s/g, '').length < 13) {
-          errors.value.cardNumber = 'Enter a valid card number (13-16 digits).';
-          isValid = false;
-        } else errors.value.cardNumber = '';
-        
-        if (!form.value.expiryDate) {
-          errors.value.expiryDate = 'Expiration date is required.';
-          isValid = false;
-        } else {
-          const expiryRegex = /^(0[1-9]|1[0-2])\/\d{4}$/;
-          if (!expiryRegex.test(form.value.expiryDate)) {
-            errors.value.expiryDate = 'Please enter date in MM/YYYY format.';
-            isValid = false;
-          } else {
-            const [month, year] = form.value.expiryDate.split('/');
-            const expDate = new Date(parseInt(year), parseInt(month), 1);
-            const today = new Date();
-            today.setDate(1);
-            if (expDate < today) {
-              errors.value.expiryDate = 'Expiration date must be in the future.';
-              isValid = false;
-            } else {
-              errors.value.expiryDate = '';
-            }
-          }
-        }
-        
-        if (!form.value.cvv) {
-          errors.value.cvv = 'CVV is required.';
-          isValid = false;
-        } else if (!/^\d{3,4}$/.test(form.value.cvv)) {
-          errors.value.cvv = 'CVV must be 3 or 4 digits.';
-          isValid = false;
-        } else errors.value.cvv = '';
-        
-        return isValid;
-      };
-      
-      const generateItinerary = () => {
-        clearErrors();
-        const valid = validateForm();
-        if (valid) {
-          generalError.value = '';
-          showSummary.value = true;
-        } else {
-          showSummary.value = false;
-          generalError.value = 'There are mandatory items pending to be filled. Please complete the required fields.';
-        }
-      };
-      
-      onMounted(() => {
-        loadPlaces();
-      });
-      
-      return {
-        form,
-        errors,
-        generalError,
-        places,
-        isLoadingPlaces,
-        placesError,
-        selectedPlaces,
-        accommodationOptions,
-        showSummary,
-        isPlaceSelected,
-        togglePlace,
-        truncateDescription,
-        handleImageError,
-        loadPlaces,
-        formatDate,
-        getAccommodationLabel,
-        clearErrors,
-        validateForm,
-        generateItinerary
-      };
-    }
-  }).mount('#app');
-</script>
+<script src="app.js"></script>
 </body>
 </html>
