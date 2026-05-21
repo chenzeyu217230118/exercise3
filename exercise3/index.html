@@ -12,15 +12,15 @@
 
 <div id="app" class="container py-4 py-md-5">
   <div class="text-center mb-4">
-    <h1 class="display-5 fw-semibold" style="color: #2d4a22;">Ghibli Park Journey</h1>
+    <h1 class="display-5 fw-semibold">Ghibli Park Journey</h1>
     <p class="lead text-muted">Build your dream itinerary — choose attractions, visitors, stay & pay</p>
   </div>
 
   <div class="accordion" id="bookingAccordion">
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingPersonal">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePersonal" aria-expanded="true" aria-controls="collapsePersonal">
-          <img src="assets/personal-icon.png" alt="personal" class="accordion-icon" onerror="this.src='https://placehold.co/24x24?text=User'">
+        <button class="accordion-button btn-bg-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePersonal" aria-expanded="true" aria-controls="collapsePersonal">
+          <i class="bi bi-person-circle me-2"></i>
           Personal Details
         </button>
       </h2>
@@ -62,8 +62,8 @@
 
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingPark">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePark" aria-expanded="false" aria-controls="collapsePark">
-          <img src="assets/park-icon.png" alt="park" class="accordion-icon" onerror="this.src='https://placehold.co/24x24?text=Park'">
+        <button class="accordion-button collapsed btn-bg-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePark" aria-expanded="false" aria-controls="collapsePark">
+          <i class="bi bi-flower1 me-2"></i>
           Ghibli Park Selection
           <span class="attractions-count" v-if="places.length">({{ places.length }} attractions)</span>
         </button>
@@ -98,8 +98,8 @@
 
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingVisitors">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVisitors" aria-expanded="false" aria-controls="collapseVisitors">
-          <img src="assets/visitors-icon.png" alt="visitors" class="accordion-icon" onerror="this.src='https://placehold.co/24x24?text=Users'">
+        <button class="accordion-button collapsed btn-bg-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVisitors" aria-expanded="false" aria-controls="collapseVisitors">
+          <i class="bi bi-people me-2"></i>
           Visitors Details
         </button>
       </h2>
@@ -123,8 +123,8 @@
 
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingAccommodation">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAccommodation" aria-expanded="false" aria-controls="collapseAccommodation">
-          <img src="assets/accommodation-icon.png" alt="accommodation" class="accordion-icon" onerror="this.src='https://placehold.co/24x24?text=Hotel'">
+        <button class="accordion-button collapsed btn-bg-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAccommodation" aria-expanded="false" aria-controls="collapseAccommodation">
+          <i class="bi bi-house-heart me-2"></i>
           Accommodation
         </button>
       </h2>
@@ -144,8 +144,8 @@
 
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingPayment">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePayment" aria-expanded="false" aria-controls="collapsePayment">
-          <img src="assets/payment-icon.png" alt="payment" class="accordion-icon" onerror="this.src='https://placehold.co/24x24?text=Card'">
+        <button class="accordion-button collapsed btn-bg-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePayment" aria-expanded="false" aria-controls="collapsePayment">
+          <i class="bi bi-credit-card me-2"></i>
           Payment Details
         </button>
       </h2>
